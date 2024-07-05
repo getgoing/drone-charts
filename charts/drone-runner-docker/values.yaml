@@ -230,3 +230,10 @@ plugins:
     endpoint: ""
   registry:
     endpoint: ""
+
+kedaScaling:
+  enabled: false
+  minReplicas: 0
+  maxReplicas: 4
+  fallbackReplicas: 4
+  cooldownPeriod: 600
