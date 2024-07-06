@@ -65,5 +65,5 @@ Create the name of the service account to use
 {{- end }}
 
 {{- define "drone-runner-docker.runnerMetricName" -}}
-{{- printf "eks-%s-%s" .Values.class.name .Values.environment }}
+{{- printf "drone-runner-%s" .Values.class.name }}
 {{- end }}

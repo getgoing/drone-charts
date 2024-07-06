@@ -16,7 +16,7 @@ spec:
     - type: datadog
       metricType: "Value"
       metadata:
-        query: "max:drone.build.runner.queue.pending{runner_name:{{ include "drone-runner-docker.runnerMetricName" . }}}.as_count() + max:drone.build.runner.queue.running{runner_name:{{ include "drone-runner-docker.runnerMetricName" . }}}.as_count()"
+        query: "max:drone.build.runner.queue.pending{runner_name:{{ include "drone-runner-docker.runnerMetricName" . }},env:{{.Values.environment}}}.as_count() + max:drone.build.runner.queue.running{runner_name:{{ include "drone-runner-docker.runnerMetricName" . }},env:{{.Values.environment}}}.as_count()"
         queryValue: "1.0"
         metricUnavailableValue: "0"
       authenticationRef:
