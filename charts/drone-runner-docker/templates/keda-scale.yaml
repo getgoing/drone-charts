@@ -13,6 +13,11 @@ spec:
   fallback:
     failureThreshold: 3
     replicas: {{ .Values.kedaScaling.fallbackReplicas }}
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: {{ .Values.kedaScaling.stabilizationWindowSeconds }}
   triggers:
     - type: datadog
       metricType: AverageValue
@@ -23,4 +28,3 @@ spec:
       authenticationRef:
         name: {{ include "drone-runner-docker.fullname" . }}
 {{- end }}
-
