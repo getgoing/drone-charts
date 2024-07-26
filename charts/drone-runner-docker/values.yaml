@@ -238,4 +238,5 @@ kedaScaling:
   fallbackReplicas: 4
   cooldownPeriod: 600
   pollingInterval: 90
-  stabilizationWindowSeconds: 60
+  scaleDown:
+    stabilizationWindowSeconds: 60

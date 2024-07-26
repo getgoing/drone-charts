@@ -17,7 +17,7 @@ spec:
     horizontalPodAutoscalerConfig:
       behavior:
         scaleDown:
-          stabilizationWindowSeconds: {{ .Values.kedaScaling.stabilizationWindowSeconds }}
+          stabilizationWindowSeconds: {{ .Values.kedaScaling.scaleDown.stabilizationWindowSeconds }}
   triggers:
     - type: datadog
       metricType: AverageValue

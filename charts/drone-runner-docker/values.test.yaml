@@ -233,4 +233,13 @@ kedaScaling:
   maxReplicas: 4
   fallbackReplicas: 4
   cooldownPeriod: 600
-  stabilizationWindowSeconds: 200
+  scaleDown:
+    stabilizationWindowSeconds: 200
+
+resources:
+  requests:
+    cpu: "500m"
+    memory: "250Mi"
+  limits:
+    cpu: "500m"
+    memory: "500Mi"
