@@ -39,6 +39,15 @@ spec:
       {{- end }}
       shareProcessNamespace: true
       containers:
+        - name: sigterm-handler
+          image: docker:20.10-cli
+          command: /bin/sh
+          args:
+            - -c
+            - |
+              while true; do
+                sleep 3600
+              done;
         # - name: sigterm-handler
         #   image: docker:20.10-cli
         #   command: /bin/sh
