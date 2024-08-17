@@ -41,7 +41,7 @@ spec:
       containers:
         - name: sigterm-handler
           image: docker:20.10-cli
-          imagePullPolicy: always
+          imagePullPolicy: Always
           command:
             - /bin/sh
           args:
