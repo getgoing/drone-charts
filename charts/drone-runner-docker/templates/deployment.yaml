@@ -41,7 +41,8 @@ spec:
       containers:
         - name: sigterm-handler
           image: docker:20.10-cli
-          command: /bin/sh
+          command:
+            - /bin/sh
           args:
             - -c
             - while true; do echo "Looping..."; sleep 5; done
