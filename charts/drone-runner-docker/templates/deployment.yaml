@@ -37,6 +37,7 @@ spec:
       volumes:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      shareProcessNamespace: true
       containers:
       - name: sigterm-handler
         image: docker:20.10-cli
