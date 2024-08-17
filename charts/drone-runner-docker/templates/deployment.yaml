@@ -45,7 +45,7 @@ spec:
           command:
             - /bin/sh
           args:
-            - c
+            - -c
             - |
               terminate_dockerd() {
                 echo "No running containers, shutting down dockerd";
