@@ -94,7 +94,7 @@ spec:
               - -H 
               - tcp://localhost:2375
               - images
-            initialDelaySeconds: 5
+            initialDelaySeconds: 15
             periodSeconds: 5
           readinessProbe:
             exec:
@@ -103,7 +103,7 @@ spec:
               - -H 
               - tcp://localhost:2375
               - images
-            initialDelaySeconds: 5
+            initialDelaySeconds: 15
             periodSeconds: 5
           resources:
             limits:
