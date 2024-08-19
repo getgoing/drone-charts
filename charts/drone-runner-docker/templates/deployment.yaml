@@ -40,7 +40,7 @@ spec:
       shareProcessNamespace: true
       containers:
         - name: sigterm-handler
-          image: docker:20.10-cli
+          image: 710267309417.dkr.ecr.us-east-1.amazonaws.com/docker-hub/library/docker:20.10-cli
           imagePullPolicy: Always
           command:
             - /bin/sh
