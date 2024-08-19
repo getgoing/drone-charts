@@ -53,11 +53,24 @@ spec:
                 exit 0
               }
 
+              get_running_containers() {
+                local count=$(DOCKER_HOST=tcp://localhost:2375 docker ps -q | wc -l)
+                count=$(echo "$count" | tr -d '[:space:]')
+                echo "$count"
+              }
+
               poll_for_running_containers() {
                 while true; do
-                  running_containers=$(DOCKER_HOST=tcp://localhost:2375 docker ps -q | wc -l)
-                  if [ "$running_containers" -eq 0 ]; then
-                    terminate_dockerd
+                  if [ "$(get_running_containers)" -eq 0 ]; then
+                    i=3
+                    while [ $i -gt 0 ]; do
+                      if [ "$(get_running_containers)" -eq 0 ]; then
+                        echo "Making sure no new pipeline steps (containers) are scheduled by the runner. Terminating dockerd in $i...";
+                        i=$((i-1))
+                      fi
+                      sleep 3
+                    done
+                    [ "$(get_running_containers)" -eq 0 ] && terminate_dockerd
                   else
                     echo "Containers are still running, waiting for them to stop...";
                     sleep 5
