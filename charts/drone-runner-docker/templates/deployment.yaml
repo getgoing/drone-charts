@@ -19,6 +19,9 @@ spec:
       {{- end }}
       labels:
         {{- include "drone-runner-docker.selectorLabels" . | nindent 8 }}
+        {{- if .Values.podLabels }}
+        {{- toYaml .Values.podLabels | nindent 8 }}
+        {{- end }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -87,6 +90,11 @@ spec:
           securityContext:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          lifecycle:
+            preStop:
+              # wait for all running containers to have stopped, so the last build can finish before the runner is fully stopped.
+              exec:
+                command: ["/bin/sh","-c","while true; do sleep {{ .Values.dind.gracefulShutdownRetryPeriod }}; lastEventTime=$(docker -H tcp://localhost:2375 events --since={{ .Values.dind.gracefulShutdownRetryPeriod }}s --until=1s | wc -l); containersRunning=$(docker -H tcp://localhost:2375 ps -q | wc -l); if [ $containersRunning -eq 0 ]  && [ $lastEventTime -eq 0 ]; then exit 0; fi; echo 'steps/containers running, retry'; done"]
           livenessProbe:
             exec:
               command:
