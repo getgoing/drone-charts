@@ -207,6 +207,10 @@ env:
   ## anyways (unless we want to use access keys.)
   DRONE_RUNNER_VOLUMES: /var/run/secrets/eks.amazonaws.com/serviceaccount/token:/var/run/secrets/eks.amazonaws.com/serviceaccount/token
 
+  DRONE_RUNNER_CLONE_IMAGE: 710267309417.dkr.ecr.us-east-1.amazonaws.com/docker-hub/drone/git:latest
+
+  DRONE_IMAGE_CLONE: 710267309417.dkr.ecr.us-east-1.amazonaws.com/docker-hub/drone/git:latest
+
   DRONE_SERVICE_ACCOUNT_DEFAULT: drone-sa
 
   DRONE_TRACE: true
