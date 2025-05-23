@@ -192,6 +192,7 @@ extraSecretNamesForEnvFrom:
 ## Ref: https://docs.drone.io/runner/docker/configuration/reference/
 ##
 env:
+  
   ## The docker host to be used by the drone-runner-docker when connecting
   ## to the docker daemon, defaults to the dind(sidecar) docker daemon
   DOCKER_HOST: "tcp://localhost:2375"
@@ -206,6 +207,10 @@ env:
   ## This is no more or less secure then allowing them to be mounted manually which is required
   ## anyways (unless we want to use access keys.)
   DRONE_RUNNER_VOLUMES: /var/run/secrets/eks.amazonaws.com/serviceaccount/token:/var/run/secrets/eks.amazonaws.com/serviceaccount/token
+
+  DRONE_RUNNER_CLONE_IMAGE: 710267309417.dkr.ecr.us-east-1.amazonaws.com/docker-hub/drone/git:latest
+
+  DRONE_IMAGE_CLONE: 710267309417.dkr.ecr.us-east-1.amazonaws.com/docker-hub/drone/git:latest
 
   DRONE_SERVICE_ACCOUNT_DEFAULT: drone-sa
 
