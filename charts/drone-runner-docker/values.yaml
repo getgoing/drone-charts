@@ -192,7 +192,6 @@ extraSecretNamesForEnvFrom:
 ## Ref: https://docs.drone.io/runner/docker/configuration/reference/
 ##
 env:
-  
   ## The docker host to be used by the drone-runner-docker when connecting
   ## to the docker daemon, defaults to the dind(sidecar) docker daemon
   DOCKER_HOST: "tcp://localhost:2375"
