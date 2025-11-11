@@ -39,7 +39,7 @@ dind:
   ##
   registry: docker.io
   repository: docker
-  tag: 20-dind
+  tag: 26-dind
   pullPolicy: IfNotPresent
   command:
     - "dockerd"
